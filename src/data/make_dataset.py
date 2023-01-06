@@ -24,8 +24,8 @@ def main(input_filepath, output_filepath):
     transform = transforms.Compose(
         [transforms.ToTensor(), transforms.Normalize((0.5,), (0.5,))]
     )
-
-    train_paths = [input_filepath + f"/train_{i}.npz" for i in range(5)]
+    i = 5
+    train_paths = [input_filepath + f"/train_{i}.npz" for i in range(5, 7)]
 
     X_train = np.concatenate(
         [np.load(train_file)["images"] for train_file in train_paths]
@@ -34,14 +34,14 @@ def main(input_filepath, output_filepath):
         [np.load(train_file)["labels"] for train_file in train_paths]
     )
 
-    X_test = np.load(input_filepath + "/test.npz")["images"]
-    Y_test = np.load(input_filepath + "/test.npz")["labels"]
+    # X_test = np.load(input_filepath + "/test.npz")["images"]
+    # Y_test = np.load(input_filepath + "/test.npz")["labels"]
 
     train = MNISTdata(X_train, Y_train, transform=transform)
-    test = MNISTdata(X_test, Y_test, transform=transform)
+    # test = MNISTdata(X_test, Y_test, transform=transform)
 
     torch.save(train, output_filepath + "/train.pth")
-    torch.save(test, output_filepath + "/test.pth")
+    # torch.save(test, output_filepath + "/test.pth")
 
 
 class MNISTdata(Dataset):
