@@ -1,8 +1,11 @@
 import matplotlib.pyplot as plt
 import numpy as np
 import torch
+import model
 from model import MyAwesomeModel
 from torch import nn, optim
+from torch.utils.data import DataLoader
+from src.data.make_dataset import MNISTdata
 
 # Loading the model and the data
 model = MyAwesomeModel()
@@ -16,7 +19,7 @@ criterion = nn.NLLLoss()
 optimizer = optim.Adam(model.parameters(), 1e-3)
 num_epochs = 3
 model.train()
-# List for plotting
+# Lists for plotting
 train_losses = []
 epochs = []
 

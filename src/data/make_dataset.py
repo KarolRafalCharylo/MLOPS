@@ -24,7 +24,7 @@ def main(input_filepath, output_filepath):
     transform = transforms.Compose(
         [transforms.ToTensor(), transforms.Normalize((0.5,), (0.5,))]
     )
-    i = 5
+
     train_paths = [input_filepath + f"/train_{i}.npz" for i in range(5, 7)]
 
     X_train = np.concatenate(

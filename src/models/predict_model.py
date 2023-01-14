@@ -6,6 +6,7 @@ import click
 import torch
 from dotenv import find_dotenv, load_dotenv
 from model import MyAwesomeModel
+from src.data.make_dataset import MNISTdata
 
 sys.path.insert(1, os.path.join(sys.path[0], ".."))
 os.environ["KMP_DUPLICATE_LIB_OK"] = "TRUE"
